@@ -26,35 +26,42 @@
         max-width: 430px;
         min-height: 100vh;
         background: #fff;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-        position: relative;
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
       }
       .header {
         position: sticky;
         top: 0;
         z-index: 10;
         background: #fff;
-        border-bottom: 1px solid #f0f0f0;
+        border-bottom: 1px solid #f3f4f6;
         padding: 16px 20px;
         text-align: center;
       }
       .header h1 {
         font-size: 18px;
         font-weight: 700;
-        color: #111;
+        color: #111827;
+      }
+      .content {
+        padding: 0 20px 160px;
       }
       .price-hero {
-        padding: 32px 20px 24px;
+        padding: 32px 0 24px;
       }
       .price-hero .installment {
         font-size: 14px;
-        color: #888;
+        color: #6b7280;
         margin-bottom: 4px;
       }
       .price-hero .monthly {
         font-size: 32px;
         font-weight: 800;
-        color: #111;
+        color: #111827;
+        line-height: 1.2;
         margin-bottom: 16px;
       }
       .price-row {
@@ -64,16 +71,17 @@
       }
       .price-original {
         font-size: 14px;
-        color: #aaa;
+        color: #9ca3af;
         text-decoration: line-through;
       }
       .price-final {
         font-size: 24px;
         font-weight: 700;
-        color: #111;
+        color: #111827;
       }
       .discount-badge {
         display: inline-flex;
+        align-items: center;
         padding: 2px 8px;
         border-radius: 10px;
         font-size: 14px;
@@ -84,14 +92,15 @@
       .divider {
         height: 8px;
         background: #f5f6f8;
+        margin: 0 -20px;
       }
       .section {
-        padding: 24px 20px;
+        padding: 24px 0;
       }
       .section h2 {
         font-size: 16px;
         font-weight: 700;
-        color: #111;
+        color: #111827;
         margin-bottom: 16px;
       }
       .product-grid {
@@ -100,13 +109,20 @@
         gap: 8px;
       }
       .product-btn {
+        min-width: 0;
         padding: 12px;
         border-radius: 8px;
-        border: 2px solid #e5e5e5;
+        border: 2px solid #e5e7eb;
         background: #fff;
         cursor: pointer;
         text-align: center;
+        font-size: 14px;
+        font-weight: 600;
+        color: #6b7280;
         transition: all 0.15s;
+      }
+      .product-btn:hover {
+        border-color: #d1d5db;
       }
       .product-btn.selected {
         border-color: #0099fa;
@@ -114,8 +130,6 @@
         color: #0099fa;
       }
       .product-btn .name {
-        font-size: 14px;
-        font-weight: 600;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -131,47 +145,55 @@
         border: 1px solid rgba(0, 153, 250, 0.1);
         padding: 16px;
       }
+      .benefit-list {
+        list-style: none;
+      }
       .benefit-item {
         display: flex;
         align-items: flex-start;
         gap: 10px;
         font-size: 14px;
-        color: #444;
+        color: #374151;
         margin-bottom: 10px;
       }
       .benefit-item:last-child {
         margin-bottom: 0;
       }
       .benefit-check {
+        width: 16px;
+        height: 16px;
         color: #0099fa;
-        font-size: 16px;
         flex-shrink: 0;
-        margin-top: 1px;
+        margin-top: 2px;
+      }
+      .info-rows {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
       }
       .info-row {
         display: flex;
         justify-content: space-between;
         font-size: 14px;
-        margin-bottom: 12px;
       }
       .info-label {
-        color: #888;
+        color: #6b7280;
       }
       .info-value {
-        color: #111;
+        color: #111827;
         font-weight: 500;
       }
       .info-value.strike {
-        color: #aaa;
+        color: #9ca3af;
         text-decoration: line-through;
         font-weight: 400;
       }
       .info-value.discount {
-        color: #f36161;
+        color: #ef4444;
         font-weight: 500;
       }
       .total-row {
-        border-top: 1px solid #f0f0f0;
+        border-top: 1px solid #f3f4f6;
         padding-top: 12px;
         display: flex;
         justify-content: space-between;
@@ -179,7 +201,7 @@
       .total-label {
         font-size: 16px;
         font-weight: 700;
-        color: #111;
+        color: #111827;
       }
       .total-value {
         font-size: 16px;
@@ -187,15 +209,11 @@
         color: #0099fa;
       }
       .cta-wrap {
-        position: fixed;
+        position: sticky;
         bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        max-width: 430px;
         background: #fff;
-        border-top: 1px solid #f0f0f0;
-        padding: 16px 20px max(16px, env(safe-area-inset-bottom));
+        border-top: 1px solid #f3f4f6;
+        padding: 16px 20px;
       }
       .cta-btn {
         width: 100%;
@@ -207,15 +225,63 @@
         font-weight: 700;
         border: none;
         cursor: pointer;
+        transition: background-color 0.15s;
+      }
+      .cta-btn:hover {
+        background: #0088e0;
       }
       .cta-btn:active {
         background: #0077c7;
       }
-      .bottom-spacer {
-        height: 100px;
+      .cta-btn:disabled {
+        opacity: 0.5;
+      }
+      footer {
+        background: #f5f6f8;
+        padding: 40px 20px;
+        flex: 1;
+      }
+      .footer-info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .footer-info-row {
+        display: flex;
+        gap: 6px;
+        font-size: 12px;
+      }
+      .footer-info-label {
+        color: #9ca3af;
+        flex-shrink: 0;
+      }
+      .footer-info-value {
+        color: #6b7280;
+      }
+      .footer-links {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid #d1d5db;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 12px;
+      }
+      .footer-links a {
+        color: #9ca3af;
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .footer-links a:hover {
+        color: #4b5563;
+      }
+      .footer-links .sep {
+        color: #d1d5db;
       }
       .loading {
-        min-height: 100vh;
+        flex: 1;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -234,12 +300,12 @@
         }
       }
       .error-msg {
-        min-height: 100vh;
+        flex: 1;
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 20px;
-        color: #888;
+        color: #6b7280;
         text-align: center;
       }
     </style>
@@ -247,29 +313,70 @@
   <body>
     <div class="container" id="app"></div>
 
+    <script src="https://js.tosspayments.com/v2/standard"></script>
     <script>
       // ============================================================
-      // 설정
+      // 설정 (로컬 테스트용)
       // ============================================================
       const CONFIG = {
         API_BASE_URL: "http://localhost:8000/api",
-        BRIDGE_PAGE_URL: "https://dd8fehg59f97n.cloudfront.net/bridge/",
+        TOSS_CLIENT_KEY: "test_ck_vZnjEJeQVxNn7nvblyZO8PmOoBN0",
+        BRIDGE_PAGE_URL: "http://localhost:3000/bridge.html",
       };
 
+      // 혜택 목록 (프론트엔드와 동일 - 과목별 필터링 지원)
       const BENEFITS = [
-        "기간 내 무제한 이용권",
-        "최신기출 업데이트",
-        "과목별 학습진행률",
-        "주간 학습 현황",
-        "진도별 정답률 비교",
-        "각 과목(문제풀이, 암기카드) 진도 알림",
-        "문제풀이 (공부모드, 시험모드)",
-        "암기카드 (순차학습, 랜덤학습)",
-        "오답노트 자동생성 (시험모드)",
-        "오답횟수, 마지막 문풀 날짜 표기",
-        "북마크 지정",
-        "복습 필터링 (과목, 진도, 기간, 오답횟수 등)",
-        "일시정지 20일 (나누어서 사용 가능)",
+        { label: "기간 내 무제한 이용권" },
+        { label: "최신기출 업데이트" },
+        { label: "과목별 학습진행률" },
+        { label: "주간 학습 현황" },
+        { label: "진도별 정답률 비교" },
+        { label: "각 과목(문제풀이, 암기카드) 진도 알림" },
+        { label: "문제풀이 (공부모드, 시험모드)" },
+        { label: "암기카드 (순차학습, 랜덤학습)" },
+        { label: "오답노트 자동생성 (시험모드)" },
+        { label: "오답횟수, 마지막 문풀 날짜 표기" },
+        { label: "북마크 지정" },
+        {
+          label:
+            "복습 필터링 (과목, 진도, 기간, 오답횟수, 복습여부, 출제학교, 출제연도)",
+          excludeSubject: "한자",
+        },
+        {
+          label: "복습 필터링 (과목, 진도, 기간, 오답횟수, 복습여부)",
+          onlySubject: "한자",
+        },
+        { label: "일시정지 20일 (나누어서 사용 가능, 횟수 제한없음)" },
+      ];
+
+      // 사업자 정보 (프론트엔드와 동일)
+      const BUSINESS_INFO = [
+        { label: "상호명", value: "메디컬부스트" },
+        { label: "대표자명", value: "송동은" },
+        { label: "사업자등록번호", value: "357-65-00531" },
+        { label: "사업자등록일", value: "2022년 05월 26일" },
+        {
+          label: "사업장 주소",
+          value:
+            "서울특별시 강남구 남부순환로359길 14, 3층-E409호(도곡동, 도곡빌딩)",
+        },
+        { label: "TEL", value: "010-6448-8116" },
+        { label: "통신판매업 신고번호", value: "1763-6880-2499-8459" },
+      ];
+
+      const FOOTER_LINKS = [
+        {
+          label: "서비스 이용약관",
+          href: "https://classic-gondola-a62.notion.site/30fe46a4928b8004a7caeacc665b4e02",
+        },
+        {
+          label: "개인정보 처리방침",
+          href: "https://classic-gondola-a62.notion.site/30fe46a4928b8027bb02d2eb0fa3593b",
+        },
+        {
+          label: "서비스 이용 및 환불 규정",
+          href: "https://classic-gondola-a62.notion.site/30fe46a4928b8081ab0ad55b39543f22",
+        },
       ];
 
       function formatPrice(price) {
@@ -281,70 +388,64 @@
       }
 
       // ============================================================
-      // 임시 상품 데이터 (테스트용)
+      // 클립보드에 Deferred Deep Link 데이터 저장
       // ============================================================
-      const MOCK_PRODUCTS = [
-        {
-          subject_product_id: 1,
-          display_name: "해부학 이용권",
-          subject: { name: "해부학" },
-          price: 99000,
-          discounted_price: 79000,
-          discount_rate: 20,
-          duration_days: 150,
-        },
-        {
-          subject_product_id: 2,
-          display_name: "생리학 이용권",
-          subject: { name: "생리학" },
-          price: 99000,
-          discounted_price: 79000,
-          discount_rate: 20,
-          duration_days: 150,
-        },
-        {
-          subject_product_id: 3,
-          display_name: "생화학 이용권",
-          subject: { name: "생화학" },
-          price: 99000,
-          discounted_price: 79000,
-          discount_rate: 20,
-          duration_days: 150,
-        },
-        {
-          subject_product_id: 4,
-          display_name: "약리학 이용권",
-          subject: { name: "약리학" },
-          price: 89000,
-          discounted_price: 69000,
-          discount_rate: 22,
-          duration_days: 150,
-        },
-        {
-          subject_product_id: 5,
-          display_name: "병리학 이용권",
-          subject: { name: "병리학" },
-          price: 89000,
-          discounted_price: 69000,
-          discount_rate: 22,
-          duration_days: 150,
-        },
-        {
-          subject_product_id: 6,
-          display_name: "미생물학 이용권",
-          subject: { name: "미생물학" },
-          price: 79000,
-          discounted_price: 59000,
-          discount_rate: 25,
-          duration_days: 150,
-        },
-      ];
+      function copyDeferredLink(productId) {
+        var deferredData = JSON.stringify({
+          type: "ms_deferred_link",
+          path: "payments",
+          params: { subject_product_id: productId },
+          ts: Date.now(),
+        });
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          return navigator.clipboard.writeText(deferredData).catch(function () {
+            copyFallback(deferredData);
+          });
+        } else {
+          copyFallback(deferredData);
+          return Promise.resolve();
+        }
+      }
+
+      function copyFallback(text) {
+        try {
+          var textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textarea);
+        } catch (e) {}
+      }
+
+      // ============================================================
+      // SVG 체크 아이콘 (lucide-react Check 아이콘과 동일)
+      // ============================================================
+      function checkIconSvg() {
+        return '<svg class="benefit-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+      }
+
+      // ============================================================
+      // 혜택 필터링 (프론트엔드와 동일한 로직)
+      // ============================================================
+      function getFilteredBenefits(subjectName) {
+        return BENEFITS.filter(function (b) {
+          if (b.onlySubject) return subjectName === b.onlySubject;
+          if (b.excludeSubject) return subjectName !== b.excludeSubject;
+          return true;
+        });
+      }
 
       // ============================================================
       // 상태
       // ============================================================
       let products = [];
       let selectedProduct = null;
+      let code = null;
+      let paying = false;
 
       // ============================================================
       // 초기화
@@ -354,16 +455,35 @@
         app.innerHTML =
           '<div class="loading"><div class="spinner"></div></div>';
 
-        // 임시 데이터 사용 (백엔드 불필요)
-        products = MOCK_PRODUCTS;
+        const params = getParams();
+        code = params.get("code");
+        const urlProductId = params.get("subject_product_id");
 
-        const urlProductId = getParams().get("subject_product_id");
-        const matched = urlProductId
-          ? products.find((p) => p.subject_product_id === Number(urlProductId))
-          : null;
-        selectedProduct = matched || products[0];
+        try {
+          const res = await fetch(
+            `${CONFIG.API_BASE_URL}/web/payments/toss/products/`,
+          );
+          if (!res.ok) throw new Error("상품 목록을 불러오지 못했습니다.");
+          const data = await res.json();
+          products = data.results;
 
-        render();
+          if (products.length === 0) {
+            app.innerHTML =
+              '<div class="error-msg">등록된 상품이 없습니다.</div>';
+            return;
+          }
+
+          const matched = urlProductId
+            ? products.find(
+                (p) => p.subject_product_id === Number(urlProductId),
+              )
+            : null;
+          selectedProduct = matched || products[0];
+
+          render();
+        } catch (err) {
+          app.innerHTML = `<div class="error-msg">${err.message || "오류가 발생했습니다."}</div>`;
+        }
       }
 
       // ============================================================
@@ -375,78 +495,104 @@
 
         const discountAmount = p.price - p.discounted_price;
         const monthlyPrice = Math.ceil(p.discounted_price / 5);
+        const filteredBenefits = getFilteredBenefits(p.subject.name);
 
         const app = document.getElementById("app");
         app.innerHTML = `
     <header class="header"><h1>과목 결제</h1></header>
 
-    <div class="price-hero">
-      <div class="installment">5개월 할부 시</div>
-      <div class="monthly">월 ₩${formatPrice(monthlyPrice)}</div>
-      <div class="price-row">
-        ${
-          p.discount_rate > 0
-            ? `
-          <span class="price-original">₩${formatPrice(p.price)}</span>
-          <span class="price-final">₩${formatPrice(p.discounted_price)}</span>
-          <span class="discount-badge">${p.discount_rate}%</span>
-        `
-            : `
-          <span class="price-final">₩${formatPrice(p.price)}</span>
-        `
-        }
-      </div>
+    <div class="content">
+      <section class="price-hero">
+        <div class="installment">5개월 할부 시</div>
+        <div class="monthly">월 ₩${formatPrice(monthlyPrice)}</div>
+        <div class="price-row">
+          ${
+            p.discount_rate > 0
+              ? `
+            <span class="price-original">₩${formatPrice(p.price)}</span>
+            <span class="price-final">₩${formatPrice(p.discounted_price)}</span>
+            <span class="discount-badge">${p.discount_rate}%</span>
+          `
+              : `
+            <span class="price-final">₩${formatPrice(p.price)}</span>
+          `
+          }
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <section class="section">
+        <h2>상품 선택</h2>
+        <div class="product-grid" id="productGrid"></div>
+      </section>
+
+      <div class="divider"></div>
+
+      <section class="section">
+        <h2>포함 혜택</h2>
+        <div class="benefit-box">
+          <ul class="benefit-list">
+            ${filteredBenefits
+              .map(
+                (b) => `
+              <li class="benefit-item">
+                ${checkIconSvg()}
+                <span>${b.label}</span>
+              </li>
+            `,
+              )
+              .join("")}
+          </ul>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <section class="section">
+        <h2>결제 정보</h2>
+        <div class="info-rows">
+          <div class="info-row"><span class="info-label">상품</span><span class="info-value">${p.display_name}</span></div>
+          <div class="info-row"><span class="info-label">과목</span><span class="info-value">${p.subject.name}</span></div>
+          <div class="info-row"><span class="info-label">이용기간</span><span class="info-value">${p.duration_days}일</span></div>
+          <div class="info-row"><span class="info-label">정상가</span><span class="info-value strike">₩${formatPrice(p.price)}</span></div>
+          ${
+            discountAmount > 0
+              ? `
+            <div class="info-row"><span class="info-label">할인</span><span class="info-value discount">-₩${formatPrice(discountAmount)}</span></div>
+          `
+              : ""
+          }
+          <div class="total-row">
+            <span class="total-label">총 결제금액</span>
+            <span class="total-value">₩${formatPrice(p.discounted_price)}</span>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <div class="divider"></div>
-
-    <div class="section">
-      <h2>상품 선택</h2>
-      <div class="product-grid" id="productGrid"></div>
+    <div class="cta-wrap">
+      <button class="cta-btn" id="payBtn" onclick="handlePayment()">₩${formatPrice(p.discounted_price)} 결제하기</button>
     </div>
 
-    <div class="divider"></div>
-
-    <div class="section">
-      <h2>포함 혜택</h2>
-      <div class="benefit-box">
-        ${BENEFITS.map(
-          (b) => `
-          <div class="benefit-item">
-            <span class="benefit-check">✓</span>
-            <span>${b}</span>
+    <footer>
+      <div class="footer-info">
+        ${BUSINESS_INFO.map(
+          (item) => `
+          <div class="footer-info-row">
+            <span class="footer-info-label">${item.label}</span>
+            <span class="footer-info-value">${item.value}</span>
           </div>
         `,
         ).join("")}
       </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="section">
-      <h2>결제 정보</h2>
-      <div class="info-row"><span class="info-label">상품</span><span class="info-value">${p.display_name}</span></div>
-      <div class="info-row"><span class="info-label">과목</span><span class="info-value">${p.subject.name}</span></div>
-      <div class="info-row"><span class="info-label">이용기간</span><span class="info-value">${p.duration_days}일</span></div>
-      <div class="info-row"><span class="info-label">정상가</span><span class="info-value strike">₩${formatPrice(p.price)}</span></div>
-      ${
-        discountAmount > 0
-          ? `
-        <div class="info-row"><span class="info-label">할인</span><span class="info-value discount">-₩${formatPrice(discountAmount)}</span></div>
-      `
-          : ""
-      }
-      <div class="total-row">
-        <span class="total-label">총 결제금액</span>
-        <span class="total-value">₩${formatPrice(p.discounted_price)}</span>
+      <div class="footer-links">
+        ${FOOTER_LINKS.map(
+          (link, i) =>
+            `${i > 0 ? '<span class="sep">|</span>' : ""}<a href="${link.href}" target="_blank" rel="noopener noreferrer">${link.label}</a>`,
+        ).join("")}
       </div>
-    </div>
-
-    <div class="bottom-spacer"></div>
-
-    <div class="cta-wrap">
-      <button class="cta-btn" onclick="handlePayment()">₩${formatPrice(p.discounted_price)} 결제하기</button>
-    </div>
+    </footer>
   `;
 
         const grid = document.getElementById("productGrid");
@@ -467,43 +613,73 @@
       }
 
       // ============================================================
-      // 결제 버튼 → 클립보드 저장 후 Bridge 랜딩 페이지로 이동
+      // 결제 버튼 → 클립보드 저장 + Toss 결제
       // ============================================================
-      function handlePayment() {
-        if (!selectedProduct) return;
+      async function handlePayment() {
+        if (!selectedProduct || paying) return;
 
         var productId = String(selectedProduct.subject_product_id);
-        var bridgeUrl = `${CONFIG.BRIDGE_PAGE_URL}?subject_product_id=${productId}`;
 
-        // Deferred Deep Link: 클립보드에 딥링크 데이터 저장
-        var deferredData = JSON.stringify({
-          type: "ms_deferred_link",
-          path: "payments",
-          params: { subject_product_id: productId },
-          ts: Date.now(),
-        });
+        // code가 없으면 Bridge 페이지로 이동 (앱 열기/설치 유도)
+        // 이 경우에만 클립보드에 Deferred Deep Link 저장 (앱 미설치 → 스토어 → 첫 실행 시 사용)
+        if (!code) {
+          await copyDeferredLink(productId);
+          window.location.href = `${CONFIG.BRIDGE_PAGE_URL}?subject_product_id=${productId}`;
+          return;
+        }
 
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard
-            .writeText(deferredData)
-            .then(function () {
-              window.location.href = bridgeUrl;
-            })
-            .catch(function () {
-              window.location.href = bridgeUrl;
-            });
-        } else {
-          try {
-            var textarea = document.createElement("textarea");
-            textarea.value = deferredData;
-            textarea.style.position = "fixed";
-            textarea.style.opacity = "0";
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand("copy");
-            document.body.removeChild(textarea);
-          } catch (e) {}
-          window.location.href = bridgeUrl;
+        // code가 있으면 Toss 결제 진행
+        paying = true;
+        var payBtn = document.getElementById("payBtn");
+        if (payBtn) {
+          payBtn.disabled = true;
+        }
+
+        try {
+          var res = await fetch(
+            `${CONFIG.API_BASE_URL}/web/payments/toss/prepare/`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                code: code,
+                subject_product_id: selectedProduct.subject_product_id,
+              }),
+            },
+          );
+
+          if (!res.ok) {
+            alert("코드가 유효하지 않습니다.");
+            window.location.href = `${CONFIG.BRIDGE_PAGE_URL}?subject_product_id=${productId}`;
+            return;
+          }
+
+          var data = await res.json();
+
+          var tossPayments = TossPayments(CONFIG.TOSS_CLIENT_KEY);
+          var payment = tossPayments.payment({
+            customerKey: data.customer_email,
+          });
+
+          await payment.requestPayment({
+            method: "CARD",
+            amount: { currency: "KRW", value: data.amount },
+            orderId: data.order_id,
+            orderName: data.order_name,
+            customerEmail: data.customer_email,
+            customerName: data.customer_name,
+            successUrl: `${data.success_url}${data.success_url.includes("?") ? "&" : "?"}code=${code}`,
+            failUrl: data.fail_url,
+          });
+        } catch (err) {
+          if (err && err.message !== "USER_CANCEL") {
+            alert(err.message || "결제 중 오류가 발생했습니다.");
+          }
+        } finally {
+          paying = false;
+          if (payBtn) {
+            payBtn.disabled = false;
+          }
         }
       }
 
